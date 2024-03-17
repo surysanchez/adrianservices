@@ -2,12 +2,17 @@
  const path = require('path');
  const favicon = require('serve-favicon');
  const logger = require('morgan');
-	
+
+const session = require('express-session');
+const passport = require('passport');
+
 // Always require and configure near the top 
 require('dotenv').config();
 
 // Connect to the database
 require('./config/database');
+
+require('./config/passport');
 
  const app = express();
 	
@@ -18,6 +23,15 @@ require('./config/database');
  // to serve from the production 'build' folder
  app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
  app.use(express.static(path.join(__dirname, 'build')));
+
+ app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
  // Put API routes here, before the "catch all" route
 
