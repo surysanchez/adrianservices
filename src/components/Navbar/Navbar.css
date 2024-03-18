@@ -7,6 +7,9 @@
 
     padding: 1rem 2rem;
 }
+.login-pic{
+    height: 30px;
+}
 
 .app__navbar-logo {
     display: flex;

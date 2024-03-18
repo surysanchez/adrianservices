@@ -6,6 +6,9 @@
 const session = require('express-session');
 const passport = require('passport');
 
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+
 // Always require and configure near the top 
 require('dotenv').config();
 
@@ -33,8 +36,17 @@ require('./config/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// Add this middleware BELOW passport middleware
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
  // Put API routes here, before the "catch all" route
 
+//  app.use('/api/users', require('./routes/api/users'));
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', function(req, res) {

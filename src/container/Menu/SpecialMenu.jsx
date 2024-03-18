@@ -33,7 +33,7 @@ const SpecialMenu = () => {
         {/* <p className="app__specialMenu-menu_heading">Professional Work</p> */}
         <div className="app__specialMenu_menu_items">
           {data.OtherCustomWorks.map((OtherCustomWork, index) => (
-            <MenuItem key={OtherCustomWork.title + index} title={OtherCustomWork.title} tags={OtherCustomWork.tags} />
+            <MenuItem  key={OtherCustomWork.title + index} title={OtherCustomWork.title} tags={OtherCustomWork.tags} />
           ))}
         </div>
       </div>

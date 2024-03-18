@@ -17,7 +17,7 @@ const itemsVariants= {
   }
  }
 
-const Navbar = () => {
+const Navbar = ({user, setUser}) => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
   return (
     <nav className="app__navbar" id='home'>
@@ -33,6 +33,16 @@ const Navbar = () => {
         <li className="p__opensans"><a href="#services">Services</a></li>
         <li className="p__opensans"><a href="#contact">Contact</a></li>
         <li className="p__opensans"><a href="#gallery">Gallery</a></li>
+        {/* { user ? (
+
+          <a  href="/logout" >LOG OUT</a>
+        ) : (
+          <a  href="/auth/google" 
+            >LOG IN&nbsp;<img className='login-pic' src="https://i.imgur.com/FHjYyi0.png"
+          /></a>
+        ) 
+        } */}
+  
       </motion.ul>
         <a href="#contact" className="p__opensans">Free Quote</a>
       <div className="app__navbar-smallscreen">
